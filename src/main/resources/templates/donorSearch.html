@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="head :: head"></head>
+<style>
+      tr:nth-child(even) td {
+        background-color: #edf2f4 !important; 
+      }
+      tr:nth-child(odd) td {
+        background-color:#98c1d9 !important;
+      }
+</style>
+
+<body class="bg-dark">
+<nav th:replace="navbar :: navbar"></nav>
+
+<div class="container">
+    <table class="table table-striped text-center">
+        <thead style="background-color: #e56b6f ; border:none">
+            <tr>
+                <th scope="col">Name</th>
+                <th scope="col">Age</th>
+                <th scope="col">Gender</th>
+                <th scope="col">Phone</th>
+                <th scope="col">Donor Status</th>
+                <th scope="col">Last Donated</th>
+                <th scope="col">City</th>
+                <th scope="col">Report</th>
+            </tr>
+        </thead>
+        <tbody>
+            <th:block th:if="${not #lists.isEmpty(search)}">
+                <th:block th:each="result : ${search}">
+                    <tr>
+                        <td th:text="${result.name}"></td>
+                        <td th:text="${T(java.time.LocalDate).now().getYear() - T(java.time.LocalDate).parse(result.dateofbirth).getYear()}"></td>
+                        <td th:text="${result.gender}"></td>
+                        <td th:text="${result.phone}"></td>
+                        <td>
+                            <button class="btn btn-success" th:text="${result.isAvail}"></button>
+                        </td>
+                        <td th:text="${result.lastDonated}"></td>
+                        <td th:text="${result.city}"></td>
+                        <td>
+                            <button type="button" class="btn btn-danger" data-toggle="modal" th:data-target="'#myModal' + ${result.id}">
+                                Report
+                            </button>
+                        </td>
+                    </tr>
+                    <div class="modal fade" th:id="'myModal' + ${result.id}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="myModalLabel">Report Donor</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                               
+                                    <form action="/donor/report" method="POST">
+                                        <div class="form-group">
+                                            <label for="name">Report Name:</label>
+                                            <input type="text" class="form-control" id="name" name="name" th:value="${result.name}" readonly>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="email">Report Mail:</label>
+                                            <input type="email" class="form-control" id="email" name="email" th:value="${result.email}" readonly>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="report">Report Reason:</label>
+                                            <select class="form-control" id="report" name="reason" required>
+                                                <option>Wrong Phone Number</option>
+                                                <option>Donor location Changed</option>
+                                                <option>Donated Recently</option>
+                                                <option>Can't Donate Anymore</option>
+                                                <option>Denied to Donate</option>
+                                            </select>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="report-text">Report information:</label>
+                                            <textarea class="form-control" id="report-text" name="information" rows="5" required></textarea>
+                                        </div>
+                                        
+                                        	<button type="submit" class="btn btn-danger">Report</button>
+      
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </th:block>
+           </th:block>
+            <tr th:unless="${not #lists.isEmpty(search)}">
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>No Donors Available in this City.</td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+<script>
+    $('#myModal ${result.id}').on('show.bs.modal', function (event) {
+        var button = $(event.relatedTarget);
+        var recipient = button.data('whatever');
+        var modal = $(this);
+        modal.find('.modal-body #email').val(recipient);
+    });
+</script>
+</body>
+</html>

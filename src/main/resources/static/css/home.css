@@ -1,0 +1,90 @@
+html{
+    scroll-behavior:smooth !important;
+  }
+  body{
+    font-family: Arial, Helvetica, sans-serif;
+  }
+    .img{
+        background-image: url("https://static.mygov.in/indiancc/2021/08/mygov-9999999992095197695.jpg");;
+        height: 70vh;
+        width: 100%;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+    @media only screen and (max-width: 600px) {
+        .img{
+            background-image: url('https://img.freepik.com/free-vector/blood-donation-background_1057-981.jpg');
+            background-position: left;
+        }
+      }
+    h3 {
+      font-weight: 600;
+      background-image: repeating-linear-gradient(to right, #553c9a, #ee4b2b 10%, #553c9a 20%),
+      repeating-radial-gradient(circle closest-corner at 100px 100px, #553c9a, #ee4b2b 10%, #553c9a 20%),
+      repeating-conic-gradient(#553c9a 0%, #553c9a 10%, #ee4b2b 10%, #ee4b2b 20%, #00c2cb 20%, #00c2cb 30%);
+      color: transparent;
+      background-clip: text;
+      -webkit-background-clip: text;
+    }
+    .card{
+        background-color:  #98c1d9;
+        box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.3);
+
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+    
+    .quick li a{
+      color: blue;
+      font-family:Arial;
+    }
+    .about{
+        text-indent: 7rem;
+        text-align: justify;
+      
+    }
+    ul li a:hover{
+    	color:red;
+        text-decoration: none;
+    }
+    .card-text{
+      font-style: italic;
+    }
+    .img-flex{
+      object-fit: cover;
+      object-position: center;
+      width: 100%;
+      border-radius: 1rem;
+    }
+    .wrapper-facts,
+    .wrapper-facts-2{
+      padding: 1rem;
+      border-radius: 2rem;
+    }
+    .wrapper-facts{
+      background-color:#A2CDB0;
+
+      box-shadow: rgba(162, 205, 176, 0.4) -5px 5px, rgba(162, 205, 176, 0.3) -10px 10px, rgba(162, 205, 176, 0.2) -15px 15px, rgba(162, 205, 176, 0.1) -20px 20px, rgba(162, 205, 176, 0.05) -25px 25px;
+    
+    }
+    .wrapper-facts-2{
+      background-color:#FFACAC ;
+      box-shadow: rgba(255, 172, 172, 0.4) -5px 5px, rgba(255, 172, 172, 0.3) -10px 10px, rgba(255, 172, 172, 0.2) -15px 15px, rgba(255, 172, 172, 0.1) -20px 20px, rgba(255, 172, 172, 0.05) -25px 25px;
+    }
+    div ul{
+      color: #42032C;
+    }
+   
+   .wrapper-elig{
+    padding: 1rem;
+    border-radius: 1rem;
+    box-shadow: rgba(164, 222, 224, 0.4) 5px 5px, rgba(164, 222, 224, 0.3) 10px 10px, rgba(164, 222, 224, 0.2) 15px 15px, rgba(164, 222, 224, 0.1) 20px 20px, rgba(164, 222, 224, 0.05) 25px 25px;
+   }
+   .card-title{
+    background-color: darkgrey;
+    padding: .5rem;
+    border-radius: 2rem;
+    color: red;
+   }

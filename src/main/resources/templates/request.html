@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="head :: head"></head>
+<style>
+    .search{
+      padding: .5rem 1rem;
+      border-radius: 4rem;
+    }
+    .heading{
+      color: #ee6c4d;
+      background-color: #293241;
+      padding: .5rem 1rem;
+      border-radius: 2rem;
+      text-align: center;
+      font-size: 1.2rem;
+    }
+    form{
+      background-color: #98c1d9;
+      padding: 2rem 4rem;
+      margin: 2%;
+      border-radius: 5rem;
+    }
+   
+</style>
+<body class="bg-dark">
+<nav th:replace="navbar :: navbar"></nav>
+
+<div class="container-fluid outer" style="color: #6d597a ; font-weight:bold">
+  <div class="container-fluid d-flex flex-column justify-content-center align-items-center">
+  
+    <form action="/donor/search" method="POST">
+    
+      <p class="pb-2 heading">Search for a Donor</p>
+      <div class="form-row ">
+          <div class="form-group col-12">
+            <label for="inputStatus">Blood Group <i class="fa fa-asterisk fa-2xs text-danger"></i> </label>
+            <select id="inputStatus" name="bgroup" class="form-control"  required>
+              <option>Choose...</option>
+              <option th:each="data : ${bloods}" th:value="${data.id}" th:text="${data.bgroup}"></option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group col-12">
+            <label for="inputCountry">Country <i class="fa fa-asterisk fa-2xs text-danger"></i> </label>
+            <select id="country-dd" name="country" class="form-control" required >
+              <option>Select Country</option>
+        <option th:each="data : ${countries}" th:value="${data.id}" th:text="${data.name}"></option>
+            </select>
+          </div>
+          </div>
+          
+          <div class="form-row">
+            <div class="form-group col-12">
+              <label for="inputState">State <i class="fa fa-asterisk fa-2xs text-danger"></i> </label>
+              <select id="state-dd" name="state" class="form-control"  required></select>
+            
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group col-12 ">
+              <label for="inputCity">City <i class="fa fa-asterisk fa-2xs text-danger"></i> </label>
+              <select id="city-dd" name="city" class="form-control"  required >
+                <!-- <option>Choose...</option> -->
+              </select>
+            </div>
+        </div>
+
+        
+         <p class="text-center"><button type="submit" class="btn btn-primary search ">Search</button></p>
+      
+
+
+</form>
+      </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
+    <script type="text/javascript">
+    $(document).ready(function() {
+        $('#country-dd').change(function(event) {
+            var idCountry = this.value;
+            $('#state-dd').html('');
+
+            $.ajax({
+                url: "/fetchStates",
+                type: 'GET',
+                dataType: 'json',
+                data: {countryId: idCountry},
+                success:function(response){
+                    $('#state-dd').html('<option value="">Select State</option>');
+                    $.each(response,function(index, val){
+                        $('#state-dd').append('<option value="'+val.id+'"> '+val.name+' </option>')
+                    });
+                    $('#city-dd').html('<option value="">Select City</option>');
+                }
+            });
+        });
+
+        $('#state-dd').change(function(event) {
+            var idState = this.value;
+            $('#city-dd').html('');
+
+            $.ajax({
+                url: "/fetchCities",
+                type: 'GET',
+                dataType: 'json',
+                data: {stateId: idState},
+                success:function(response){
+                    $('#city-dd').html('<option value="">Select City</option>');
+                    $.each(response,function(index, val){
+                        $('#city-dd').append('<option value="'+val.id+'"> '+val.name+' </option>')
+                    });
+                }
+            });
+        });
+    });
+</script>
+
+</body>
+</html>

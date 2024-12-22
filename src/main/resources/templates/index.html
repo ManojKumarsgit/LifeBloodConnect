@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="head :: head"></head>
+<body class="bg-dark" >
+   <nav th:replace="navbar :: navbar"></nav>
+
+<div class="img d-flex"></div>   
+<div class="container-fluid p-3">
+    <h3>Quick links</h3>
+    <ul class="quick">
+        <li><a href="#about" style="color:blue !important;" >About us</a></li>
+        <li><a href="#facts" style="color:blue !important;"  >Blood Donation Facts</a></li>
+        <li><a href="#eligible" style="color:blue !important;" >Who can/can't Donate Blood</a></li>
+    </ul>
+</div>
+
+<br id="about">
+
+<div class="container-fluid">
+    <h3>About us</h3>
+    <div class="container-fluid ">
+        <p class="about">
+            Have you at anytime witnessed a relative of yours or a close friend searching frantically for a blood donor, when blood banks say out of stock, the donors in mind are out of reach and the time keeps ticking? Have you witnessed loss of life for the only reason that a donor was not available at the most needed hour? Is it something that we as a society can do nothing to prevent? This thought laid our Website.
+        </p>
+        <p class="about">
+            <b>"LifeBloodConnect"</b> is an website that brings voluntary blood donors and those in need of blood on to a common platform.  Through this website, we seek donors who are willing to donate blood, as well as provide the timeliest support to those in frantic need of it.
+        </p>
+    </div>
+</div>
+<div class="container-fluid">
+<div class="row text-center">
+  <div class="col-sm-12 col-lg-4">
+    <div class="card" style="height: 14rem;">
+      <div class="card-body">
+        <h5 class="card-title">Mission</h5>
+        <p class="card-text"> To fulfill every blood request in the country with a promising web portal and motivated individuals who are willing to donate blood.</p>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-12  col-lg-4">
+    <div class="card" style="height: 14rem;">
+      <div class="card-body">
+        <h5 class="card-title">Vision</h5>
+        <p class="card-text">To create a world where every individual in need of blood can easily access a reliable and efficient blood donation platform, and where voluntary blood donation becomes a cornerstone of community support and healthcare.</p>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-12 col-lg-4">
+    <div class="card" style="height: 14rem;">
+      <div class="card-body">
+        <h5 class="card-title" >Motto</h5>
+        <p class="card-text">"Sharing Life, Saving Lives."</p>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+<br id="facts">
+
+<div class="container-fluid">
+    <h3 >Blood Donation Facts</h3>
+    <br>
+    <div class="container wrapper-facts">
+      <h4 class="text-center">Facts about blood needs</h4>
+      <div class="row d-flex justify-content-center align-items-center">
+      <div class="col-lg-5 col-12 col-md-12">
+        <img src="https://stanfordbloodcenter.org/wp-content/uploads/2020/06/Blood-facts_10-illustration-graphics__canteen.png" class="img-flex" >
+      </div>
+      <div class="col-lg-7 col-12 col-md-12 text-white">
+        <ul>
+          <li>Every year our nation requires about 5 Crore units of blood, out of which only a meager 2.5 Crore units of blood are available.</li>
+          <li>The gift of blood is the gift of life. There is no substitute for human blood.</li>
+          <li>More than 38,000 blood donations are needed every day.</li>
+          <li>The average red blood cell transfusion is approximately 3 pints.</li>
+          <li>The blood type most often requested by hospitals is Type O.</li>
+          <li>More than 1 million new people are diagnosed with cancer each year. Many of them will need blood, sometimes daily, during their chemotherapy treatment.</li>
+          <li>A single car accident victim can require as many as 100 units of blood</li>
+        </ul>
+      </div>
+      </div>
+    </div>
+
+    <br>
+
+    <div class="container wrapper-facts-2">
+      <h4 class="text-center">Facts about the blood supply</h4>
+      <div class="row d-flex justify-content-center align-items-center">
+      <div class="col-lg-7 col-12 col-md-12 text-white">
+        <ul>
+          <li>Blood cannot be manufactured - it can only come from generous donors.</li>
+          <li>Type O-negative blood (red cells) can be transfused to patients of all blood types. It is always in great demand and often in short supply.</li>
+          <li>Type AB-positive plasma can be transfused to patients of all other blood types. AB plasma is also usually in short supply.</li>
+        </ul>
+      </div>
+      <div class="col-lg-5 col-12 col-md-12">
+        <img  th:src="@{/images/homeimage.jpg}" class="img-flex">
+      </div>
+      </div>
+    </div>
+
+    <br>
+
+    <div class="container wrapper-facts">
+      <h4 class="text-center">Facts about the blood donation process</h4>
+      <div class="row  d-flex justify-content-center align-items-center">
+      <div class="col-lg-5 col-12 col-md-12">
+        <img src="https://images.news18.com/ibnlive/uploads/2023/06/world-blood-donor-day-2023.jpg?impolicy=website&width=0&height=0"  class="img-flex" >
+      </div>
+      <div class="col-lg-7 col-12 col-md-12 text-white">
+        <ul>
+          <li>Donating blood is a safe process. A sterile needle is used only once for each donor and then discarded.</li>
+          <li>Blood donation is a simple four-step process: registration, medical history and mini-physical, donation and refreshments.</li>
+          <li>Every blood donor is given a mini-physical, checking the donor's temperature, blood pressure, pulse and hemoglobin to ensure it is safe for the donor to give blood.</li>
+          <li>The actual blood donation typically takes less than 10-12 minutes. The entire process, from the time you arrive to the time you leave, takes about an hour and 15 min.
+              The average adult has about 10 units of blood in his body. Roughly 1 unit is given during a donation.</li>
+          <li>A healthy donor may donate red blood cells every 56 days, or double red cells every 112 days.</li>    
+          <li>A healthy donor may donate platelets as few as 7 days apart, but a maximum of 24 times a year.</li>
+          <li>All donated blood is tested for HIV, hepatitis B and C, syphilis and other infectious diseases before it can be transfused to patients.</li>
+        </ul>
+      </div>
+      </div>
+    </div>
+<br>
+    <div class="container wrapper-facts-2">
+      <h4 class="text-center">Facts about blood and its components</h4>
+      <div class="row  d-flex justify-content-center align-items-center">
+      <div class="col-lg-7 col-12 col-md-12 text-white">
+        <ul>
+          <li>Blood makes up about 7 percent of your body's weight.</li>
+          <li>There are four types of transfusable products that can be derived from blood: red cells, platelets, plasma and cryoprecipitate. Typically, two or three of these are produced from a unit of donated whole blood – hence each donation can help save up to three lives.</li>
+          <li>Donors can give either whole blood or specific blood components only. The process of donating specific blood components – red cells, plasma or platelets – is called apheresis.</li>
+          <li>One transfusion dose of platelets can be obtained through one apheresis donation of platelets or by combining the platelets derived from five whole blood donations.</li>
+          <li>Donated platelets must be used within five days of collection.</li>
+          <li>Healthy bone marrow makes a constant supply of red cells, plasma and platelets. The body will replenish the elements given during a blood donation – some in a matter of hours and others in a matter of weeks.</li>
+        </ul>
+      </div>
+      <div class="col-lg-5 col-12 col-md-12 d-flex">
+        <img src="https://static.mygov.in/indiancc/2021/08/mygov-9999999992095197695.jpg" class="img-flex" >
+      </div>
+      </div>
+    </div>
+<br>
+    <div class="container wrapper-facts">
+      <h4 class="text-center">Facts about donors</h4>
+      <div class="row d-flex justify-content-center align-items-center">
+      <div class="col-lg-5 col-12 col-md-12 ">
+        <img src="https://akm-img-a-in.tosshub.com/indiatoday/images/bodyeditor/202106/World_Blood_Donor_Day_2021-1200x1280.png?zPoL_99qDxFsZr7ygc1ydEinqjuDmDgK?size=750:*" class="img-flex" >
+      </div>
+      <div class="col-lg-7 col-12 col-md-12 text-white">
+        <ul>
+          <li>The number one reason donors say they give blood is because they "want to help others."</li>
+          <li>Two most common reasons cited by people who don't give blood are: "Never thought about it" and "I don't like needles."</li>
+          <li>One donation can help save the lives of up to three people.</li>
+          <li>If you began donating blood at age 18 and donated every 90 days until you reached 60, you would have donated 30 gallons of blood, potentially helping save more than 500 lives!</li>
+          <li>Only 7 percent of people in India have O-negative blood type. O-negative blood type donors are universal donors as their blood can be given to people of all blood types.</li>
+          <li>Type O-negative blood is needed in emergencies before the patient's blood type is known and with newborns who need blood.</li>
+          <li>Thirty-five percent of people have Type O (positive or negative) blood.</li>
+          <li>0.4 percent of people have AB-blood type. AB-type blood donors are universal donors of plasma, which is often used in emergencies, for newborns and for patients requiring massive transfusions.</li>
+      </div>
+      </div>
+    </div>
+</div>
+
+<br id="eligible">
+
+<div class="container-fluid ">
+  <h3 >Who can/can't Donate Blood</h3>
+  <br>
+  <div class="container wrapper-elig bg-white">
+    <h4 class="text-danger">Who are all Eligible:</h4>
+    <p class="text-secondary"><b>Let others benefit from your good health. Do donate blood if..</b></p>
+    <ul>
+      <li>You are between age group of 18-65 years.</li>
+      <li>Your weight is 45 kgs or more.</li>
+      <li>Your haemoglobin is 12.5 gm% minimum.</li>
+      <li>Your last blood donation was 3 months earlier.</li>
+      <li>You are healthy and have not suffered from malaria, typhoid or other transmissible disease in the recent past.</li>
+   </ul>
+    <p class="text-secondary"><b>Do abide by our rules - be truthful about your health status!</b></p>
+    <p>We ensure the health of blood, before we take it, as well as after it is collected. Firstly, the donor is expected to be honest about his or her health history and current condition. Secondly, collected blood is tested for venereal diseases, hepatitis B & C and AIDS.</p>
+    <p>You have to be healthy to give <b> 'safe blood'</b></p>
+  </div>
+<br>
+  <div class="container wrapper-elig bg-white">
+    <h4 class="text-danger">Who are all Not Eligible:</h4>
+    <p><b class="text-secondary">Do not donate blood if you have any of these conditions</b></p>
+      <li>Cold / fever in the past 1 week.</li>
+      <li>Under treatment with antibiotics or any other medication.</li>
+      <li>Cardiac problems, hypertension, epilepsy, diabetes (on insulin therapy), history of cancer,chronic kidney or liver disease, bleeding tendencies, venereal disease etc.</li>
+      <li>Major surgery in the last 6 months.</li>
+      <li>Vaccination in the last 24 hours.</li>
+      <li>Had a miscarriage in the last 6 months or have been pregnant / lactating in the last one year.
+had fainting attacks during last donation.</li>
+      <li>Have regularly received treatment with blood products.</li>
+      <li>Shared a needle to inject drugs/ have history of drug addiction.</li>
+      <li>Had sexual relations with different partners or with a high risk individual.</li>
+      <li>Been tested positive for antibodies to HIV.</li>
+  <br>
+    <p><b class="text-secondary">Pregnancy And Menstrual Cycle:</b></p>
+      <li>Females should not donate blood during pregnancy.</li>
+      <li>They can donate after 6 months following a normal delivery and when they are not breast feeding.</li>
+      <li>Females should not donate blood if they are having heavy menstrual flow or menstrual cramps.</li>
+      </ul>
+  </div>
+</div>
+<br>
+
+<script>
+  document.body.classList.remove('bg-dark');
+    document.body.classList.add('bg-white');
+
+  const navbarToggleButton = document.querySelector('.navbar-toggler');
+  const navbarCollapse = document.querySelector('.navbar-collapse');
+
+  navbarToggleButton.addEventListener('click', () => {
+    navbarCollapse.classList.toggle('show');
+  });
+
+</script>
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+      <script th:src="@{/js/nav.js}"></script>
+      
+</body>
+</html>

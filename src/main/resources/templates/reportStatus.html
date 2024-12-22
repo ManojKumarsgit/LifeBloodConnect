@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="head :: head"></head>
+<body>
+
+<div th:if="${success}" class="alert alert-success">
+    <strong th:text="${success}"></strong>
+    <h2 class="text-center text-primary">THANK YOU FOR YOUR REPORT!</h2>
+    <h3 class="text-center text-secondary">We'll update as soon as possible!</h3>
+</div>
+
+<div th:if="${error}" class="alert alert-danger">
+    <strong th:text="${error}"></strong>
+</div>
+
+
+</body>
+</html>

@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="head2 :: head"></head>
+<style>
+    .edit{
+      padding: .5rem 1rem;
+      border-radius: 4rem;
+    }
+    .heading{
+      color: #ee6c4d;
+    }
+</style>
+
+<body class="bg-dark">
+<nav th:replace="nav2 :: navbar2"></nav>
+
+<!-- <div th:if="${success}" class="alert alert-success">
+    <strong th:text="${success}"></strong>
+</div> -->
+
+ <div class="wrapper">
+        <nav id="sidebar">
+            <div class="sidebar-header">
+               DONOR
+            </div>
+
+            <ul class="list-unstyled components">
+                <li>
+                    <a th:href="@{/donor/profile/{id}(id=${donor.id})}">Profile Details</a>
+                </li>
+                <li>
+                    <a th:href="@{/donor/profile/edit/{id}(id=${donor.id})}">Edit Profile</a>
+                </li>
+                <li>
+                    <a th:href="@{/donor/profile/report/{id}(id=${donor.id})}">Reports</a>
+                </li>
+                <li>
+                <form th:action="@{/donor/profile/logout}" method="POST">
+					    <button type="submit" class="btn btn-warning ml-2">Logout Profile</button>
+					</form>
+                </li>
+                <li>
+                	<form id="deleteForm" th:action="@{'/donor/profile/delete/' + ${donor.id}}" method="POST">
+					    <button type="button" class="btn btn-danger ml-2" onclick="confirmDelete()">Delete Profile</button>
+					</form>
+                </li>
+            </ul>
+        </nav>
+        <div id="content">
+
+          <button type="button" id="sidebarCollapse" class="btn btn-info">
+              <i class="fas fa-align-left"></i>
+              <span class="toggle-text">Close</span>
+          </button> 
+          <div class="container outer" style="color:white">
+  <div class="container-fluid">
+      <h3 class="heading">Profile Details</h3>
+
+        <div class="form-row">
+          <div class="form-group col-md-4">
+            <label for="name">Name</label>
+            <input type="text" class="form-control" name="name" id="name"  readonly th:value="${donor.name}">
+          </div>
+          <div class="form-group col-md-4">
+            <label for="email">Email</label>
+            <input type="email" class="form-control" name="email" id="email" readonly   th:value="${donor.email}">
+          </div>
+          <div class="form-group col-md-4">
+            <label for="mobile">Phone Number</label>
+            <input type="text" class="form-control" name="phone" id="mobile" readonly   th:value="${donor.phone}">
+          </div>
+        </div>
+
+        <div class="form-row">
+        <div class="form-group col-md-4">
+              <label for="gender">Gender</label>
+             <input type="text" class="form-control" name="gender" id="gender" readonly th:value="${donor.gender}">
+          </div>
+          <div class="form-group col-md-4">
+              <label for="dateofbirth">Date of Birth</label>
+             <input type="text" class="form-control" name="dateofbirth" id="dateofbirth" readonly th:value="${donor.dateofbirth}">
+          </div>
+          <div class="form-group col-md-4">
+              <label for="age">Age</label>
+             <input type="text" class="form-control" name="age" id="age" readonly th:value="${donor.age}">
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group col-md-4">
+            <label for="inputCountry">Country</label>
+            <input id="country-dd" name="country" class="form-control" readonly th:value="${donor.country}">
+          </div>
+          <div class="form-group col-md-4">
+            <label for="inputState">State</label>
+            <input id="state-dd" name="state" class="form-control" readonly th:value="${donor.state}">
+          </div>
+          <div class="form-group col-md-4">
+            <label for="inputCity">City</label>
+            <input id="city-dd" name="city" class="form-control" readonly th:value="${donor.city}">
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group col-md-4">
+            <label for="btStatus">Blood Group</label>
+            <input id="bStatus" name="bgroup" readonly class="form-control" th:value="${donor.bgroup}">
+        </div>
+          <div class="form-group col-md-4">
+              <label for="inputStatus" >Availability to donate blood</label>
+              <input id="inputStatus" name="is_avail" class="form-control" readonly th:value="${donor.isAvail}">
+          </div>
+          <div class="form-group col-md-4">
+            <label for="last_don">Last Donated</label>
+           <input type="text" class="form-control" name="last_donated" id="last_don" readonly th:value="${donor.lastDonated}">
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <script>
+    function confirmDelete() {
+        if (confirm("Are you sure you want to delete this profile?")) {
+          document.getElementById('deleteForm').submit();
+        } else {
+            return false;
+        }
+    }
+    
+</script>
+        </div>
+
+</div>
+</body>
+</html>

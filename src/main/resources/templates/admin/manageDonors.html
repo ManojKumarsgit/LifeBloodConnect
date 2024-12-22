@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="head2 :: head"></head>
+<style>
+    .edit{
+      padding: .5rem 1rem;
+      border-radius: 4rem;
+    }
+    .heading{
+      color: #ee6c4d;
+    }
+</style>
+
+<body class="bg-dark">
+<nav th:replace="nav2 :: navbar2"></nav>
+
+<!-- <div th:if="${success}" class="alert alert-success">
+    <strong th:text="${success}"></strong>
+</div> -->
+
+ <div class="wrapper">
+        <nav id="sidebar">
+            <div class="sidebar-header">
+               ADMIN
+            </div>
+
+            <ul class="list-unstyled components">
+                <li>
+                    <a th:href="@{/admin/manageDonors}">Manage Donors</a>
+                </li>
+
+                <li>
+                    <a th:href="@{/admin/manageReports}">Reports</a>
+                </li>
+                <li>
+                	<form th:action="@{/admin/logout}" method="POST">
+					    <button type="submit" class="btn btn-warning ml-2">Logout Profile</button>
+					</form>
+                </li>
+            </ul>
+        </nav>
+        <div id="content">
+
+          <button type="button" id="sidebarCollapse" class="btn btn-info">
+              <i class="fas fa-align-left"></i>
+              <span class="toggle-text">Close</span>
+          </button>
+          
+          <div class="container-fluid outer">
+    <div class="container-fluid">
+        <form action="#" th:action="@{/admin/search/show}" method="post">
+
+            <h3 class="text-center text-white">Search</h3>
+            <div class="form-row text-white">
+                <div class="form-group col-md-4">
+                    <label for="email">Email</label>
+                    <input type="text" class="form-control" name="email" id="email" placeholder="Email" required />
+                    <button type="submit" class="btn btn-primary mt-2 e">Search</button>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <div class="container-fluid">
+        <div class="table-responsive">
+            <a th:href="@{/admin/manageDonors}" class="text-primary">Back</a>
+            <h3 class="text-center text-white">Donor List</h3>
+            <table class="table table-hover text-center table-borderless table-dark table-stripe" style="margin-top:10px;">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Phone</th>
+                        <th>Blood Group</th>
+                        <th>Status</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <th:block th:if="${search == null}">
+                        <tr th:each="donor, i : ${donors}">
+                            <td th:text="${i.index + 1}"></td>
+                            <td th:text="${donor.name}"></td>
+                            <td th:text="${donor.email}"></td>
+                            <td th:text="${donor.phone}"></td>
+                            <td th:text="${donor.bgroup}"></td>
+                            <td>
+                                <button class="btn btn-xs py-0"
+                                    th:class="${donor.isAvail == 'Available'} ? 'btn-success' : 'btn-danger'">
+                                    <span th:text="${donor.isAvail}"></span>
+                                </button>
+                            </td>
+                            <td>
+                                <div class="d-flex justify-content-center">
+                                    <div>
+                                        <a th:href="@{/admin/profile/edit/{id}(id=${donor.id})}"
+                                            class="btn btn-warning btn-xs py-0 mr-1">Edit</a>
+                                    </div>
+                                    <form th:action="@{/admin/profile/delete/{id}(id=${donor.id})}" method="post" id="deleteForm">
+                                        
+                                        <input type="hidden" name="_method" value="delete" />
+                                        <button type="button" class="btn btn-danger btn-xs py-0" onclick="confirmDelete()">Delete</button>
+                                    </form>
+                                </div>
+                            </td>
+                        </tr>
+                    </th:block>
+                     
+                    
+                    <th:block th:if="${search}">
+                     <tr th:each="search : ${search}">
+                            <td th:text="${search.id}"></td>
+                            <td th:text="${search.name}"></td>
+                            <td th:text="${search.email}"></td>
+                            <td th:text="${search.phone}"></td>
+                            <td th:text="${search.bgroup}"></td>
+                            <td>
+                                <button class="btn btn-xs py-0"
+                                    th:class="${search.isAvail == 'Available'} ? 'btn-success' : 'btn-danger'">
+                                    <span th:text="${search.isAvail}"></span>
+                                </button>
+                            </td>
+                            <td>
+                                <div class="d-flex justify-content-center">
+                                    <div>
+                                        <a th:href="@{/admin/profile/edit/{id}(id=${search.id})}"
+                                            class="btn btn-warning btn-xs py-0 mr-1">Edit</a>
+                                    </div>
+                                    <form th:action="@{/admin/profile/destroy/{id}(id=${search.id})}" method="post">
+                                        
+                                        <input type="hidden" name="_method" value="delete" />
+                                        <button type="submit" class="btn btn-danger btn-xs py-0">Delete</button>
+                                    </form>
+                                </div>
+                            </td>
+                        </tr>
+                    </th:block>
+                     <th:block th:if="${error}">
+                        <tr>
+                            <td colspan="7">Donor Not Found</td>
+                        </tr>
+                    </th:block>
+                  
+                </tbody>
+            </table>
+           
+        </div>
+    </div>
+</div>
+ </div>
+ </div>
+  <script>
+    function confirmDelete() {
+        if (confirm("Are you sure you want to delete this profile?")) {
+          document.getElementById('deleteForm').submit();
+        } else {
+            return false;
+        }
+    }
+    
+</script>
+ </body>
+ </html>         
+    

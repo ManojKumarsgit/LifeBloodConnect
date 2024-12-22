@@ -1,0 +1,7 @@
+ul li a {
+    transition: 0.3s;
+}
+
+ul li a:hover{
+    color: red !important;
+}

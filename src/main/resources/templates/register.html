@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="head :: head"></head>
+<style>
+    .register{
+      padding: .5rem 1rem;
+      border-radius: 4rem;
+    }
+    .heading{
+      color: #ee6c4d;
+    }
+   
+</style>
+<body class="bg-dark">
+<nav th:replace="navbar :: navbar"></nav>
+<div class="alert alert-warning p-0 pl-1" style="font-size: .8rem;">
+    Note:
+    <ul>
+        <li>Kindly update your date of donation once done</li>
+        <li>Also please update your profile information if in case you relocate in future.</li>
+        <li>Before registering, see who are all eligible to donate. <a href="/">Eligibility Criteria</a></li>
+    </ul>
+</div>
+
+<div class="container outer" style="color: white;">
+    <div class="container-fluid">
+        <form action="/donor/store" method="POST">
+            <h4 class="heading pb-2">DONOR REGISTER FORM</h4>
+            <div class="form-row">
+                <div class="form-group col-md-4">
+                    <label for="name">Name <i class="fa fa-asterisk fa-2xs text-danger"></i> </label>
+                    <input type="text" class="form-control" name="name" id="name" placeholder="Name" required th:value="${param.name}">
+                    
+                </div>
+                <div class="form-group col-md-4">
+                    <label for="mobile">Phone Number <i class="fa fa-asterisk fa-2xs text-danger"></i> </label>
+                    <input type="text" class="form-control" name="phone" id="mobile" placeholder="Phone No." required th:value="${param.phone}">
+                    <th:block th:if="${phone}">
+		            <span class="text-danger" style="font-size:12px;" >
+		                <strong th:text="${phone}"></strong>
+		            </span>
+		       </th:block>
+                </div>
+                <div class="form-group col-md-2">
+                    <label for="gender">Gender <i class="fa fa-asterisk fa-2xs text-danger"></i> </label>
+                    <select id="gender" name="gender" class="form-control" required>
+                        <option th:value="${param.gender}">Select Gender</option>
+                        <option value="Male">Male</option>
+                        <option value="Female">Female</option>
+                    </select>
+                   
+                </div>
+                <div class="form-group col-md-2">
+                    <label for="dateofbirth">Date of Birth <i class="fa fa-asterisk fa-2xs text-danger"></i> </label>
+                    <input type="date" class="form-control" name="dateofbirth" id="dateofbirth" required th:value="${param.dateofbirth}">
+                    
+                    <th:block th:if="${age}">
+		            <span class="text-danger" style="font-size:12px;" >
+		                <strong th:text="${age}"></strong>
+		            </span>
+		            </th:block>
+	
+                </div>
+            </div>
+            <div class="form-row">
+            <div class="form-group col-md-4">
+              <label for="email">Email <i class="fa fa-asterisk fa-2xs text-danger"></i> </label>
+              <input type="email" class="form-control" name="email" id="email" placeholder="Email"  required th:value="${param.email}" >
+             
+            </div>
+            <div class="form-group col-md-4">
+              <label for="password">Password <i class="fa fa-asterisk fa-2xs text-danger"></i> </label>
+              <input type="password" class="form-control" name="password" id="password" placeholder="Password" />
+              <div th:if="${error}" class="text-danger" style="font-size:12px">
+				    <strong th:text="${error}"></strong>
+				</div>
+            </div>
+            <div class="form-group col-md-4">
+              <label for="password2">Re-Type Password <i class="fa fa-asterisk fa-2xs text-danger"></i> </label>
+              <input type="password" class="form-control" name="password2" id="password2" placeholder="Password"> 
+              <div th:if="${error}" class="alert alert-danger" style="font-size:12px">
+			    <strong th:text="${error}"></strong>
+			</div>   
+            </div>
+        </div>
+         <div class="form-row">
+          <div class="form-group col-md-4">
+            <label for="inputCountry">Country <i class="fa fa-asterisk fa-2xs text-danger"></i> </label>
+            <select id="country-dd" name="country" class="form-control" required >
+              <option th:value="${param.country}">Select Country</option>
+        <option th:each="data : ${countries}" th:value="${data.id}" th:text="${data.name}"></option>
+            </select>
+          </div>
+       
+            <div class="form-group col-md-4">
+              <label for="inputState">State <i class="fa fa-asterisk fa-2xs text-danger"></i> </label>
+              <select id="state-dd" name="state" class="form-control"  required th:value="${param.state}"></select>
+            
+            </div>
+            <div class="form-group col-md-4">
+              <label for="inputCity">City <i class="fa fa-asterisk fa-2xs text-danger"></i> </label>
+              <select id="city-dd" name="city" class="form-control"  required th:value="${param.city}">
+                <!-- <option>Choose...</option> -->
+              </select>
+            </div>
+        </div>
+        <div class="form-row ">
+          <div class="form-group col-md-4">
+            <label for="inputStatus">Blood Group <i class="fa fa-asterisk fa-2xs text-danger"></i> </label>
+            <select id="inputStatus" name="bgroup" class="form-control"  required th:value="${param.bgroup}">
+              <option>Choose...</option>
+              <option th:each="data : ${bloods}" th:value="${data.id}" th:text="${data.bgroup}"></option>
+            </select>
+          </div>
+         <div class="form-group col-md-4">
+              <label for="inputStatus">Confirm your availability to donate blood <i class="fa fa-asterisk fa-2xs text-danger"></i> </label>
+              <select id="inputStatus" name="isAvail" class="form-control"  required>
+                <option>Available</option>
+                <option>Unavailable</option>
+              </select>
+          </div>
+          <div class="form-group col-md-4">
+            <label for="last_don">Last Donated</label>
+           <input type="date" class="form-control" name="lastDonated" id="last_don" th:value="${param.lastDonated}" >
+          </div>
+        </div>
+       
+        
+            <p class="text-warning text-center">
+                By registering I authorise this website to display my name and telephone number, so that the needy could contact me, as and when there is an emergency.
+            </p>
+            <p class="text-center"><button type="submit" class="btn btn-primary register">Register</button></p>
+        </form>
+    </div>
+</div>
+ <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
+    <script type="text/javascript">
+    $(document).ready(function() {
+        $('#country-dd').change(function(event) {
+            var idCountry = this.value;
+            $('#state-dd').html('');
+
+            $.ajax({
+                url: "/fetchStates",
+                type: 'GET',
+                dataType: 'json',
+                data: {countryId: idCountry},
+                success:function(response){
+                    $('#state-dd').html('<option value="">Select State</option>');
+                    $.each(response,function(index, val){
+                        $('#state-dd').append('<option value="'+val.id+'"> '+val.name+' </option>')
+                    });
+                    $('#city-dd').html('<option value="">Select City</option>');
+                }
+            });
+        });
+
+        $('#state-dd').change(function(event) {
+            var idState = this.value;
+            $('#city-dd').html('');
+
+            $.ajax({
+                url: "/fetchCities",
+                type: 'GET',
+                dataType: 'json',
+                data: {stateId: idState},
+                success:function(response){
+                    $('#city-dd').html('<option value="">Select City</option>');
+                    $.each(response,function(index, val){
+                        $('#city-dd').append('<option value="'+val.id+'"> '+val.name+' </option>')
+                    });
+                }
+            });
+        });
+    });
+</script>
+</body>
+</html>
